@@ -908,4 +908,19 @@
     const d = new FormData(e.target);
     // ⚠️ E-Mail hier anpassen:
     const mail = 'ihre-email@beispiel.de';
-    const subj = encodeURICompo
+    const subj = encodeURIComponent('Anfrage Katzenkrankenversicherung');
+    const body = encodeURIComponent(
+      `Name: ${d.get('name')}\n` +
+      `Telefon/WhatsApp: ${d.get('phone')}\n` +
+      `E-Mail: ${d.get('email')}\n` +
+      `Name der Katze: ${d.get('catname')}\n` +
+      `Alter der Katze: ${d.get('catage')}\n` +
+      `Interessierter Tarif: ${d.get('tarif')}\n\n` +
+      `Nachricht:\n${d.get('message')}`
+    );
+    window.location.href = `mailto:${mail}?subject=${subj}&body=${body}`;
+  }
+</script>
+
+</body>
+</html>
