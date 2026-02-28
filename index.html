@@ -501,6 +501,30 @@
     .cbtn-title { font-weight: 700; margin-bottom: 2px; font-size: .9rem; }
     .cbtn-sub { font-size: .75rem; font-weight: 400; color: var(--muted); }
     .cbtn-arr { font-size: 1rem; color: var(--muted); }
+    .copy-mail {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink2);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin: -2px 0 12px 56px;
+      transition: all .2s;
+    }
+    .copy-mail:hover {
+      border-color: var(--purple);
+      color: var(--purple);
+      background: var(--purple4);
+    }
+    .copy-status {
+      margin: -8px 0 14px 56px;
+      font-size: .72rem;
+      color: var(--muted);
+      min-height: 1.1em;
+    }
 
     .cform {
       background: var(--white); border-radius: 16px;
@@ -879,6 +903,8 @@
         </div>
         <span class="cbtn-arr">→</span>
       </a>
+      <button type="button" class="copy-mail" onclick="copyEmail()">E-Mail kopieren</button>
+      <p id="copy-status" class="copy-status" aria-live="polite"></p>
       <a href="https://wa.me/491733048601?text=Hallo%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Katzenkrankenversicherung." class="cbtn wa" target="_blank" rel="noopener">
         <div class="cbtn-ico">💬</div>
         <div class="cbtn-txt">
@@ -936,6 +962,16 @@
     if (!open) {
       item.classList.add('open');
       el.setAttribute('aria-expanded', 'true');
+    }
+  }
+  async function copyEmail() {
+    const email = 'it.marketing.berlin@gmail.com';
+    const status = document.getElementById('copy-status');
+    try {
+      await navigator.clipboard.writeText(email);
+      status.textContent = 'E-Mail-Adresse kopiert.';
+    } catch (err) {
+      status.textContent = 'Kopieren nicht möglich. Bitte Adresse manuell kopieren.';
     }
   }
   const io = new IntersectionObserver(entries => {
