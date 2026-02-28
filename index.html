@@ -453,10 +453,20 @@
     .fi { border-bottom: 1px solid var(--border); padding: 20px 0; }
     .fq {
       display: flex; justify-content: space-between; align-items: center;
+      width: 100%;
+      border: none;
+      background: transparent;
+      padding: 0;
+      text-align: left;
       cursor: pointer; font-weight: 600; font-size: .95rem;
       color: var(--ink); gap: 16px; transition: color .2s;
     }
     .fq:hover { color: var(--purple); }
+    .fq:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
     .fq .ico {
       width: 28px; height: 28px; border-radius: 50%;
       border: 1.5px solid var(--border);
@@ -844,13 +854,13 @@
       <span class="s-label rev">Häufige Fragen</span>
       <h2 class="rev">Ihre Fragen – <em>unsere Antworten</em></h2>
     </div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Ist eine Katzenkrankenversicherung wirklich sinnvoll?<div class="ico">+</div></div><div class="fa">Ja – besonders je jünger Ihre Katze, desto günstiger der Beitrag und desto lückenloser der Schutz. Freilaufende Katzen sind erhöhten Risiken ausgesetzt, aber auch Wohnungskatzen können erkranken oder sich verletzen. Hohe Kosten entstehen oft vollständig unerwartet.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Was ist der Unterschied zwischen OP-Schutz und Basis?<div class="ico">+</div></div><div class="fa">Der OP-Schutz deckt ausschließlich Operationen und die notwendige Vor- und Nachsorge ab. Der Basis-Tarif geht weiter: Er übernimmt auch ambulante und stationäre Behandlungen, Chemo- und Radiotherapie sowie alternative Heilmethoden – für einen umfassenderen Alltagsschutz.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Lohnt sich die Versicherung auch für Wohnungskatzen?<div class="ico">+</div></div><div class="fa">Absolut. Angekippte Fenster, giftige Zimmerpflanzen, verschlucktes Spielzeug – auch in den eigenen vier Wänden lauern Gefahren. Diagnostik, Behandlung und Medikamente summieren sich schnell, unabhängig davon, ob Ihre Katze Freigänger ist oder nicht.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Ab welchem Alter kann meine Katze versichert werden?<div class="ico">+</div></div><div class="fa">Ab 12 Wochen Lebensalter. Je früher Sie abschließen, desto günstiger die Beiträge und desto umfassender der Schutz – da noch keine Vorerkrankungen ausgeschlossen werden müssen.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Was bedeutet „Rückwärtsschutz" in Komfort & Premium?<div class="ico">+</div></div><div class="fa">In den Tarifen Komfort und Premium sind ausgewählte tierärztliche Leistungen bis zu 3 Monate rückwirkend abgesichert – bis zu 500 €. So können auch kurz vor Vertragsabschluss entstandene Kosten erstattet werden.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Was ist der Treuebonus?<div class="ico">+</div></div><div class="fa">Haben Sie in einem Versicherungsjahr keine Leistung beansprucht, erstattet der Treuebonus andere Kosten – z.B. Fell- oder Krallenpflege im Salon, alternative Heilmethoden oder Ähnliches. Je nach Tarif zwischen 50 € und 150 € pro Jahr.</div></div>
-    <div class="fi rev"><div class="fq" onclick="toggleFaq(this)">Kann ich mehrere Katzen versichern?<div class="ico">+</div></div><div class="fa">Ja – jede Katze erhält eine eigene Versicherungsnummer und einen eigenen Vertrag, damit alle Tiere die vollen Leistungen nutzen können. Neue Kätzchen können ab 12 Wochen problemlos nachversichert werden.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a1" onclick="toggleFaq(this)"><span>Ist eine Katzenkrankenversicherung wirklich sinnvoll?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a1">Ja – besonders je jünger Ihre Katze, desto günstiger der Beitrag und desto lückenloser der Schutz. Freilaufende Katzen sind erhöhten Risiken ausgesetzt, aber auch Wohnungskatzen können erkranken oder sich verletzen. Hohe Kosten entstehen oft vollständig unerwartet.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a2" onclick="toggleFaq(this)"><span>Was ist der Unterschied zwischen OP-Schutz und Basis?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a2">Der OP-Schutz deckt ausschließlich Operationen und die notwendige Vor- und Nachsorge ab. Der Basis-Tarif geht weiter: Er übernimmt auch ambulante und stationäre Behandlungen, Chemo- und Radiotherapie sowie alternative Heilmethoden – für einen umfassenderen Alltagsschutz.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a3" onclick="toggleFaq(this)"><span>Lohnt sich die Versicherung auch für Wohnungskatzen?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a3">Absolut. Angekippte Fenster, giftige Zimmerpflanzen, verschlucktes Spielzeug – auch in den eigenen vier Wänden lauern Gefahren. Diagnostik, Behandlung und Medikamente summieren sich schnell, unabhängig davon, ob Ihre Katze Freigänger ist oder nicht.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a4" onclick="toggleFaq(this)"><span>Ab welchem Alter kann meine Katze versichert werden?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a4">Ab 12 Wochen Lebensalter. Je früher Sie abschließen, desto günstiger die Beiträge und desto umfassender der Schutz – da noch keine Vorerkrankungen ausgeschlossen werden müssen.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a5" onclick="toggleFaq(this)"><span>Was bedeutet „Rückwärtsschutz" in Komfort & Premium?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a5">In den Tarifen Komfort und Premium sind ausgewählte tierärztliche Leistungen bis zu 3 Monate rückwirkend abgesichert – bis zu 500 €. So können auch kurz vor Vertragsabschluss entstandene Kosten erstattet werden.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a6" onclick="toggleFaq(this)"><span>Was ist der Treuebonus?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a6">Haben Sie in einem Versicherungsjahr keine Leistung beansprucht, erstattet der Treuebonus andere Kosten – z.B. Fell- oder Krallenpflege im Salon, alternative Heilmethoden oder Ähnliches. Je nach Tarif zwischen 50 € und 150 € pro Jahr.</div></div>
+    <div class="fi rev"><button class="fq" type="button" aria-expanded="false" aria-controls="faq-a7" onclick="toggleFaq(this)"><span>Kann ich mehrere Katzen versichern?</span><span class="ico" aria-hidden="true">+</span></button><div class="fa" id="faq-a7">Ja – jede Katze erhält eine eigene Versicherungsnummer und einen eigenen Vertrag, damit alle Tiere die vollen Leistungen nutzen können. Neue Kätzchen können ab 12 Wochen problemlos nachversichert werden.</div></div>
   </div>
 </section>
 
@@ -861,8 +871,7 @@
       <span class="s-label">Persönliche Beratung</span>
       <h2>Ich bin für Sie da –<br><em>melden Sie sich jetzt.</em></h2>
       <p class="section-lead">Schreiben Sie mir direkt – ich melde mich innerhalb weniger Stunden mit einem individuellen Angebot. Unverbindlich und kostenlos.</p>
-      <!-- ⚠️ E-Mail anpassen -->
-      <a href="/cdn-cgi/l/email-protection#93fafbe1f6bef6fef2faffd3f1f6fae0e3faf6ffbdf7f6ace0e6f1f9f6f0e7aed2fdf5e1f2f4f6b6a1a3d8f2e7e9f6fdf8e1f2fdf8f6fde5f6e1e0faf0fbf6e1e6fdf4" class="cbtn mail">
+      <a href="mailto:it.marketing.berlin@gmail.com" class="cbtn mail">
         <div class="cbtn-ico">📧</div>
         <div class="cbtn-txt">
           <div class="cbtn-title">Per E-Mail schreiben</div>
@@ -884,17 +893,17 @@
       <h3>Anfrage senden</h3>
       <form action="https://formspree.io/f/mjgezana" method="POST">
         <div class="frow">
-          <div class="fg"><label>Ihr Name *</label><input type="text" name="name" placeholder="Max Mustermann" required></div>
-          <div class="fg"><label>Telefon / WhatsApp</label><input type="tel" name="phone" placeholder="+49 123 456789"></div>
+          <div class="fg"><label for="name">Ihr Name *</label><input id="name" type="text" name="name" placeholder="Max Mustermann" required></div>
+          <div class="fg"><label for="phone">Telefon / WhatsApp</label><input id="phone" type="tel" name="phone" placeholder="+49 123 456789"></div>
         </div>
-        <div class="fg"><label>E-Mail-Adresse *</label><input type="email" name="email" placeholder="max@beispiel.de" required></div>
+        <div class="fg"><label for="email">E-Mail-Adresse *</label><input id="email" type="email" name="email" placeholder="max@beispiel.de" required></div>
         <div class="frow">
-          <div class="fg"><label>Name der Katze</label><input type="text" name="catname" placeholder="z.B. Luna"></div>
-          <div class="fg"><label>Alter der Katze</label><input type="text" name="catage" placeholder="z.B. 2 Jahre"></div>
+          <div class="fg"><label for="catname">Name der Katze</label><input id="catname" type="text" name="catname" placeholder="z.B. Luna"></div>
+          <div class="fg"><label for="catage">Alter der Katze</label><input id="catage" type="text" name="catage" placeholder="z.B. 2 Jahre"></div>
         </div>
         <div class="fg">
-          <label>Interessierter Tarif</label>
-          <select name="tarif">
+          <label for="tarif">Interessierter Tarif</label>
+          <select id="tarif" name="tarif">
             <option value="">Bitte wählen…</option>
             <option>OP-Schutz</option>
             <option>Basis</option>
@@ -903,9 +912,9 @@
             <option>Noch unentschieden – bitte beraten</option>
           </select>
         </div>
-        <div class="fg"><label>Nachricht</label><textarea name="message" placeholder="Weitere Fragen oder Informationen…"></textarea></div>
+        <div class="fg"><label for="message">Nachricht</label><textarea id="message" name="message" placeholder="Weitere Fragen oder Informationen…"></textarea></div>
         <button type="submit" class="fsub">Anfrage senden</button>
-        <p class="fnote">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.</p>
+        <p class="fnote">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Für den Formularversand nutzen wir Formspree als technischen Dienstleister.</p>
       </form>
     </div>
   </div>
@@ -913,17 +922,21 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <p>© 2025 meine-katzenversicherung · Ihr Versicherungsvermittler</p>
+  <p>© 2026 meine-katzenversicherung · Ihr Versicherungsvermittler</p>
   <p><a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | <a href="widerruf.html">Widerrufsrecht</a></p>
   <p style="max-width:500px; text-align:right;">Maßgeblich für den Leistungsumfang sind die dem Versicherungsvertrag zugrundeliegenden allgemeinen Versicherungsbedingungen. Diese Seite dient der Information und stellt kein verbindliches Angebot dar.</p>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   function toggleFaq(el) {
-    const item = el.parentElement;
+    const item = el.closest('.fi');
     const open = item.classList.contains('open');
     document.querySelectorAll('.fi').forEach(i => i.classList.remove('open'));
-    if (!open) item.classList.add('open');
+    document.querySelectorAll('.fq').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    if (!open) {
+      item.classList.add('open');
+      el.setAttribute('aria-expanded', 'true');
+    }
   }
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
