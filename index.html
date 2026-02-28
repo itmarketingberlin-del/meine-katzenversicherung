@@ -51,18 +51,46 @@
     }
     .nav-logo {
       font-family: 'Lora', serif;
-      font-size: 1.25rem; font-weight: 700;
+      font-size: 1.15rem; font-weight: 600;
       color: var(--ink); text-decoration: none;
       display: flex; align-items: center; gap: 10px;
-      letter-spacing: -.2px;
+      letter-spacing: -.3px;
     }
     .nav-logo .logo-icon {
-      width: 34px; height: 34px; border-radius: 9px;
-      background: linear-gradient(135deg, var(--purple), var(--purple2));
+      width: 36px; height: 36px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple2) 100%);
       display: flex; align-items: center; justify-content: center;
-      font-size: .95rem; color: #fff;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(91,75,138,.2);
     }
-    .nav-logo em { color: var(--purple); font-style: normal; }
+    .nav-logo .logo-icon::before {
+      content: '';
+      position: absolute;
+      width: 14px; height: 14px;
+      background: white;
+      border-radius: 50%;
+      top: 8px; left: 8px;
+      opacity: .9;
+    }
+    .nav-logo .logo-icon::after {
+      content: '';
+      position: absolute;
+      width: 10px; height: 10px;
+      background: white;
+      border-radius: 50%;
+      bottom: 8px; right: 8px;
+      opacity: .9;
+    }
+    .nav-logo .logo-text {
+      font-size: .82rem;
+      font-weight: 500;
+      color: var(--ink2);
+      letter-spacing: .02em;
+    }
+    .nav-logo .logo-text strong {
+      font-weight: 700;
+      color: var(--purple);
+    }
     .nav-links { display: flex; align-items: center; gap: 32px; }
     .nav-links a {
       color: var(--ink2); text-decoration: none;
@@ -552,8 +580,8 @@
 <!-- ── NAV ── -->
 <nav>
   <a class="nav-logo" href="#">
-    <div class="logo-icon">🐾</div>
-    meine-<em>katzenversicherung</em>
+    <div class="logo-icon"></div>
+    <div class="logo-text">meine-<strong>katzenversicherung</strong></div>
   </a>
   <div class="nav-links">
     <a href="#tarife">Tarife</a>
