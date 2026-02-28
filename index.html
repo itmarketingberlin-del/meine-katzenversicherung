@@ -927,7 +927,7 @@
         </div>
         <div class="frow">
           <div class="fg"><label for="name">Ihr Name *</label><input id="name" type="text" name="name" placeholder="Max Mustermann" required></div>
-          <div class="fg"><label for="phone">Telefon / WhatsApp *</label><input id="phone" type="tel" name="phone" placeholder="+49 123 456789" required></div>
+          <div class="fg"><label for="phone">Telefon / WhatsApp *</label><input id="phone" type="tel" name="phone" placeholder="+49 123 456789" inputmode="tel" autocomplete="tel" minlength="6" pattern="[0-9+()\\s\\-/]{6,}" title="Bitte eine gültige Telefonnummer eingeben." required></div>
         </div>
         <div class="fg"><label for="email">E-Mail-Adresse *</label><input id="email" type="email" name="email" placeholder="max@beispiel.de" required></div>
         <div class="frow">
@@ -975,6 +975,24 @@
       el.setAttribute('aria-expanded', 'true');
     }
   }
+  const contactForm = document.getElementById('anfrage-formular');
+  const phoneInput = document.getElementById('phone');
+  function validatePhoneField() {
+    const digits = phoneInput.value.replace(/\D/g, '');
+    if (digits.length < 6) {
+      phoneInput.setCustomValidity('Bitte eine gültige Telefonnummer eingeben.');
+    } else {
+      phoneInput.setCustomValidity('');
+    }
+  }
+  phoneInput.addEventListener('input', validatePhoneField);
+  contactForm.addEventListener('submit', (event) => {
+    validatePhoneField();
+    if (!contactForm.checkValidity()) {
+      event.preventDefault();
+      contactForm.reportValidity();
+    }
+  });
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
