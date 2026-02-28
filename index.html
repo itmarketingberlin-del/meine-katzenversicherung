@@ -539,6 +539,35 @@
     }
     .fsub:hover { background: #4a3a77; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(91,75,138,.35); }
     .fnote { font-size: .71rem; color: var(--muted); text-align: center; margin-top: 10px; line-height: 1.5; }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .consent-row input[type="checkbox"] {
+      margin-top: 3px;
+      width: 16px;
+      height: 16px;
+      accent-color: var(--purple);
+      flex-shrink: 0;
+    }
+    .consent-row label {
+      margin: 0;
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: .78rem;
+      font-weight: 500;
+      color: var(--ink2);
+      line-height: 1.45;
+    }
+    .hp-field {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      overflow: hidden !important;
+    }
 
     /* ── FOOTER ── */
     footer {
@@ -892,9 +921,13 @@
     <div class="cform rev-r">
       <h3>Anfrage senden</h3>
       <form id="anfrage-formular" action="https://formspree.io/f/mjgezana" method="POST">
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input id="website" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
         <div class="frow">
           <div class="fg"><label for="name">Ihr Name *</label><input id="name" type="text" name="name" placeholder="Max Mustermann" required></div>
-          <div class="fg"><label for="phone">Telefon / WhatsApp</label><input id="phone" type="tel" name="phone" placeholder="+49 123 456789"></div>
+          <div class="fg"><label for="phone">Telefon / WhatsApp *</label><input id="phone" type="tel" name="phone" placeholder="+49 123 456789" required></div>
         </div>
         <div class="fg"><label for="email">E-Mail-Adresse *</label><input id="email" type="email" name="email" placeholder="max@beispiel.de" required></div>
         <div class="frow">
@@ -913,6 +946,10 @@
           </select>
         </div>
         <div class="fg"><label for="message">Nachricht</label><textarea id="message" name="message" placeholder="Weitere Fragen oder Informationen…"></textarea></div>
+        <div class="consent-row">
+          <input id="consent" type="checkbox" name="consent">
+          <label for="consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</label>
+        </div>
         <button type="submit" class="fsub">Anfrage senden</button>
         <p class="fnote">Ihre Angaben werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Für den Formularversand nutzen wir Formspree als technischen Dienstleister.</p>
       </form>
